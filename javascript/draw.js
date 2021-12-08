@@ -64,7 +64,6 @@ function draw_sensor(draw_width, draw_height, id_convas, min_val, max_val, val, 
 //Пишем показания датчика 
     let str_val = String(val);
     let point = str_val.indexOf(".", 1);
-    console.log(str_val, " - ", point, - " - ", str_val.length);
     if (point < 0){
       str_val += ".00";
     } else if (str_val.length - point == 2) {
@@ -132,7 +131,7 @@ window.onload = function() {
   else {
     size_draw = window.innerHeight;
   }
-  draw_sensor(size_draw, size_draw, 'temp_home', 15, 30, 25.5, 5, 1);
+  draw_sensor(size_draw, size_draw, 'temp_home', 15, 30, 25, 5, 1);
   draw_sensor(size_draw, size_draw, 'temp_strit', -50, 50, 10.5, 10, 5);
-  draw_sensor(size_draw, size_draw, 'temp_boller', 0, 100, 88, 5, 10);
+  draw_sensor(size_draw, size_draw, 'temp_boller', 0, 100, 45, 5, 10);
  }
