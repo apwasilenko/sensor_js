@@ -63,15 +63,16 @@ function draw_sensor(draw_width, draw_height, id_convas, min_val, max_val, val, 
     ctx.fill();
 //Пишем показания датчика 
     let str_val = String(val);
-    let point = str_val.indexOf(".", 1);
-    if (point < 0){
+    let pos_point = str_val.indexOf(".");
+    if (pos_point < 0) {
       str_val += ".00";
-    } else if (str_val.length - point == 2) {
-      str_val += "0";}
-    ctx.font = String(min_size/10) + "px Times New Roman";
+    } else if ((str_val.length - pos_point) < 3) {
+      str_val += "0";
+    }
+    ctx.font = String(min_size / 10) + "px Times New Roman";
     ctx.fillStyle = "Black";
-    ctx.fillText(str_val, draw_width / 2 - min_size / 10, draw_height / 2 + min_size /10 * 2.2);
-
+    ctx.fillText(str_val, draw_width / 2 - min_size / 10, draw_height / 2 + min_size / 10 * 2.2);
+      
     //ставим метки на шкале
     let label_x = 0;
     let label_y = 0;
@@ -132,6 +133,6 @@ window.onload = function() {
     size_draw = window.innerHeight;
   }
   draw_sensor(size_draw, size_draw, 'temp_home', 15, 30, 25, 5, 1);
-  draw_sensor(size_draw, size_draw, 'temp_strit', -50, 50, 10.5, 10, 5);
+  draw_sensor(size_draw, size_draw, 'temp_strit', -50, 50, -234, 10, 5);
   draw_sensor(size_draw, size_draw, 'temp_boller', 0, 100, 45, 5, 10);
  }
